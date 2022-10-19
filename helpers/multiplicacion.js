@@ -1,25 +1,22 @@
 const colors = require('colors');
 
-archivo = '';
+fileView = '';
+fileSave = '';
 
 const tabla = (base = 1, listar, limite)=>{
 
-    if (listar) {
+    for(let i = 1; i <= limite; i++){
+        fileView += `${ colors.red(base) } * ${ colors.green(i) } = ${ colors.blue(base * i) }\n`;
+        fileSave += `${ base } * ${ i } = ${ base * i }\n`;
+    }
+    if(listar){
         console.log('=================');
         console.log(`=  Tabla del ${ base }  =`);
         console.log('=================');
+        console.log(fileView);
     }
 
-    for(let i = 1; i <= limite; i++){
-        archivo += `${ colors.red(base) } * ${ colors.green(i) } = ${ colors.blue(base * i) }\n`;
-    }
-    if(listar){
-        console.log(archivo);
-    }
-
-    return archivo;
+    return fileSave;
 }
 
-module.exports = {
-    tabla
-};
+module.exports = tabla;
